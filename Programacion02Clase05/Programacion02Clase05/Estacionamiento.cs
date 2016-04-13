@@ -28,16 +28,16 @@ namespace Programacion02Clase05
                 for (int i = 0; i < this.listadoDeAutos.GetLength(0); i++)//this.listadoDeAutos.cantidadDeCocheras
                 {
 
-                    if (this.listadoDeAutos[i] == (object)null)//this.listadoDeAutos.GetValue(i) == null
+                    if (this.listadoDeAutos.GetValue(i) == null)//this.listadoDeAutos.GetValue(i) == null o listadoDeAutos(i) == (object)null
                     {
                         this.listadoDeAutos[i] = unAuto;
-                        Console.WriteLine("Estaciono {0}", unAuto.Patente);
+                        //Console.WriteLine("Estaciono {0}", unAuto.Patente);
                         break;
                     }
                     if (i == this.cantidadDeCocheras - 1)
                     {
                         lleno = true;
-                        Console.WriteLine("La cochera esta llena");
+                        //Console.WriteLine("La cochera esta llena");
                     }
                 }
             }
@@ -49,31 +49,16 @@ namespace Programacion02Clase05
             return lleno;
         }
 
-        /*public bool compararEstacionamiento(Estacionamiento unEstacionamiento, Auto unAuto)
-        {
-            bool respuesta = false;
-
-            foreach (Auto autoRecorriendo in unEstacionamiento.listadoDeAutos)
-            {
-                if(unAuto == autoRecorriendo)
-                {
-                    respuesta = true;
-                    break;
-                }
-            }
-            return respuesta;
-        }*/
-
         public static bool operator ==(Estacionamiento unEstacionamiento, Auto unAuto)
         {
             bool respuesta = false;
 
             foreach (Auto autoRecorriendo in unEstacionamiento.listadoDeAutos)
             {
-                if ((object)autoRecorriendo == null && autoRecorriendo == unAuto)
+                if ((object)autoRecorriendo != null && autoRecorriendo == unAuto)//cortocircuito
                 {
                     respuesta = true;
-                    //break;
+                    break;
                 }
             }
             return respuesta;

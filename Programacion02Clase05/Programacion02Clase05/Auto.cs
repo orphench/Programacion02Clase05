@@ -8,7 +8,7 @@ namespace Programacion02Clase05
 {
     class Auto
     {
-        public string Patente;
+        private string Patente;
 
         public Auto(string patente) 
         {
